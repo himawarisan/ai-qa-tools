@@ -102,5 +102,8 @@ elif score >= 50:
 else:
     verdict = "POOR"
 
+with open("report.txt", "w") as f:
+    f.write(test_cases)
+
 print(f"Verdict: {verdict}")
 
