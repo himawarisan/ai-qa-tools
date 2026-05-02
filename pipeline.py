@@ -62,15 +62,24 @@ def evaluate_response(feature, response):
     return issues
 
 
-feature = input("Enter feature: ")
+import sys
 
-print("\nGenerating test cases...\n")
-test_cases = generate_test_cases(feature)
+if len(sys.argv) < 2:
+    print("Usage: python3 pipeline.py 'Feature description'")
+    exit()
 
-print("=== GENERATED TEST CASES ===")
+feature = sys.argv[1]
+
+print("\n" + "="*50)
+print("AI QA PIPELINE")
+print("="*50)
+
+print(f"\nFeature: {feature}")
+
+print("\n--- GENERATED TEST CASES ---\n")
 print(test_cases)
 
-print("\n=== EVALUATION REPORT ===")
+print("\n--- EVALUATION REPORT ---\n")
 
 issues = evaluate_response(feature, test_cases)
 
@@ -84,4 +93,13 @@ else:
 score = max(0, 100 - len(issues) * 15)
 
 print(f"\nQuality Score: {score}/100")
+
+if score >= 80:
+    verdict = "GOOD"
+elif score >= 50:
+    verdict = "NEEDS IMPROVEMENT"
+else:
+    verdict = "POOR"
+
+print(f"Verdict: {verdict}")
 
