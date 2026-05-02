@@ -77,6 +77,7 @@ print("="*50)
 print(f"\nFeature: {feature}")
 
 print("\n--- GENERATED TEST CASES ---\n")
+test_cases = generate_test_cases(feature)
 print(test_cases)
 
 print("\n--- EVALUATION REPORT ---\n")
